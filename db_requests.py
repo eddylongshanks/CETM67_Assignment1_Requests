@@ -1,13 +1,13 @@
 """ DB Requests
 """
 
-import requests, json
-# import simplejson as json
+import json
+from requests import post, get
 
 BASE_URL = "http://127.0.0.1:5000"
 
 # GET request
-response = requests.get(BASE_URL)
+response = get(BASE_URL + "/get-all-enquiries")
 response_data = json.dumps(response.text)
 print(response.text)
 
@@ -30,11 +30,23 @@ print(response.text)
 
 
 # CREATE a new item
-response = requests.post(BASE_URL + "/name/Steve", json = {"person-name": "Steve", "age": "45", "fav_food": "pizza"})
-print(response.status_code)
+data = {
+    'first_name': 'Steve',
+    'last_name': 'Smith',
+    'building': '11',
+    'street': 'Indigo Avenue',
+    'town': 'Newcastle',
+    'county': 'Tyne and Wear',
+    'postcode': 'NE2 3JM',
+    'telephone_number': '07777777777',
+    'email': 'me@me.com',
+    'preferred_time_to_contact': 'S',
+    'annual_income': '30000',
+    'loan_amount': '50000',
+    'property_value': '1000000',
+    'mortgage_type': 'RM',
+    'ltv_value': '50'
+}
+
+response = post(BASE_URL + "/add-enquiry", json = data)
 print(response.text)
-
-# Expected Response
-
-# 200
-# "Person added!"
