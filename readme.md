@@ -1,14 +1,17 @@
-# Example Readme file v1.0
+# CETM67 Assignment 1 - API Requests v1.0
 
-## Sub heading 
+## LTV Calculator
 
-- List item 1
-- List item 2:
-  - Sub-list item 1
-  - Sub-list item 2
-  - Sub-list item 3
-- List item 3:
+Accepts the following two values as JSON:
 
-### Notes
+```python
+{
+    "loan_amount": 20000,
+    "property_value": 100000
+}
+```
 
-Add hash symbols for smaller and smaller headings
+Returns the following data:
+
+- LTV Percentage
+- A Boolean value determining acceptance, based on minimum LTV value provided within an Environment Variable set on the Lambda function
