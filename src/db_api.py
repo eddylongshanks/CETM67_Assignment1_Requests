@@ -21,21 +21,25 @@ class GetAllEnquiries(Resource):
             enquiries = table.scan()
             return enquiries['Items']
         except:
-            return 'No table found'
+            raise
 
 
 class AddEnquiry(Resource):
     def post(self):
         try:
-            data = request.json
+            data = json.loads(request.data)
+            message = data['Message']
 
+            json_message = json.loads(str(message))
+            print(str(data))
+            
             table = dynamodb.Table('Enquiry')
             table.put_item(
-                Item = data
+                Item = json_message
             )
             return 'Enquiry added'
         except:
-            return 'Enquiry not added'
+            raise
 
 
 ## Routing ##
