@@ -8,7 +8,6 @@ __pycache__/
 pyvenv.cfg
 .Python
 .vscode
-package
 build/
 develop-eggs/
 dist/
