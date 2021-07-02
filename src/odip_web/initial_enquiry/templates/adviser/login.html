@@ -1,0 +1,38 @@
+{% extends "_layout.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Adviser Login</h1>
+    <form name="odip-form" method="POST">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="error-summary" tabindex="-1">
+            <h2>There's been a problem</h2>
+            <ul>            
+            {% for key, value in form.errors.items %}
+                <li>{{ value }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="field">
+            <label class="field-label">{{ form.username.label }}</label>            
+            {{ form.username }}
+        </div> 
+
+        <div class="field">
+            <label class="field-label">{{ form.password.label }}</label>
+            <span class="field-error field-validation-valid"></span>
+            {{ form.password }}            
+        </div>
+
+        <div class="field">
+            <button type="submit" id="submit">Login</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

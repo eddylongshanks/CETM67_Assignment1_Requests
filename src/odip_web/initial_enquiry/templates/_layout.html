@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %} - Online DIP</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style-dark.css' %}" />
+
+</head>
+<body>
+    <div class="skip-to-content">
+        <a href="#main-content">Skip to main content</a>
+    </div>
+    <header>
+        <div class="container">
+            <span class="logo-box"></span>
+        </div>
+    </header>
+
+    <div class="content" id="main-content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    
+
+    <footer>
+        <div class="container">
+            <ul>
+                <li><a href="https://www.newcastle.co.uk/faqs/legal-information/" target="_blank">Legal information</a></li>
+                <li><a href="https://www.newcastle.co.uk/faqs/website-online-services/privacy-data-protection-policy/" target="_blank">Privacy & Cookies</a></li>
+                <li><a href="https://online.newcastle.co.uk/OFIS/MoreInfo.aspx?MoreInfoRef=AccountSecurity" target="_blank">Security Information</a></li>
+                <li><a href="http://www.newcastle.co.uk/contact" target="_blank">Contact Us</a></li>
+                <li><a href="https://www.newcastle.co.uk/complaints/" target="_blank">Complaints</a></li>
+                <li><a href="https://online.newcastle.co.uk/OFIS/MoreInfo.aspx?MoreInfoRef=Help">Help</a></li>
+            </ul>
+            <p>&copy; Newcastle Building Society. All Rights Reserved.</p>
+            <p><address>Principal Office, Portland House, New Bridge Street, Newcastle upon Tyne, NE1 8AL.</address></p>
+            <p>Newcastle Building Society is authorised by the Prudential Regulation Authority and regulated by the Financial Conduct Authority and the Prudential Regulation Authority.</p>
+            <p>Newcastle Building Society is registered on the Financial Services Register under the firm reference number 156058.</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    {% block javascript %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,758 @@
+﻿/* Debug */
+
+/* div, ul, p {
+    border: 1px solid black;
+} */
+
+/* Global Styles */
+
+/* Removing Arrow/Spinners - Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Removing Arrow/Spinners - Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+*, *:focus, *:hover {
+    outline: none;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    font-size: 1.125em;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+p {
+    line-height: 24px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.skip-to-content a {
+    position: absolute;
+    margin-top: -999px
+}
+
+    .skip-to-content a:focus {
+        margin: 0;
+        background: #fd0;
+        color: #000;
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+header {
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#main-content {
+    padding: 40px 20px;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.logo-box {
+    background-image: url(../images/NewcastleBuildingSocietyLogo.svg);
+    width: 800px; 
+    height: 100px;
+    display: inline-block;
+    background-position: left; 
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    line-height: 1.5;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin-bottom: .5rem;
+    line-height: inherit;
+    color: inherit;
+    white-space: normal;
+}
+
+label {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.field input {
+    padding: 8px;
+    margin-bottom: 0px;
+    width: 100%;
+    font-size: 1.125em;
+    filter: none;
+    background: #fff;
+    border: 2px solid #555;
+}
+
+h1 {
+    margin: 0 0 20px 0;
+    padding-bottom: 20px;
+    font-size: 2.22em;
+    color: #005488;    
+}
+
+h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.38em;
+    color: #005488;
+}
+
+h4 {
+    margin: 15px 0;
+    padding-left: 8px;
+    font-size: 1em;
+    color: #005488;
+}
+
+hr {
+    overflow: visible; /* For IE */
+    margin: 10px 0;
+    border: none;
+    border-top: 1px dashed #333;
+    color: #333;
+    text-align: center;    
+}
+
+button,
+a.button {
+    padding: 10px 25px;
+    background: #005488;
+    color: #fff;
+    border: 0;
+    font-size: 16px;
+    line-height: 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+    cursor: pointer;
+}
+
+    button:hover,
+    a.button:hover {
+        background: #044066;
+    }
+
+    button.button-danger,
+    a.button-danger {
+        background: rgb(182, 27, 0);
+        color: #fff;
+        padding: 10px 28px;
+        margin: 5px;
+    }
+        button.button-danger:hover,
+        a.button-danger:hover {
+            background: rgb(153, 29, 7);            
+        }
+    
+    button.button-secondary,
+    a.button-secondary {
+        background: rgb(177, 177, 177);
+    }
+        button.button-secondary:hover,
+        a.button-secondary:hover {
+            background: rgb(163, 163, 163);
+        }
+    
+    button.button-small,
+    a.button-small {
+        padding: 5px 15px;
+        margin: 5px 5px 5px 0;
+        font-size: 14px;
+        font-weight: bolder;
+    }
+
+.input-validation-error {
+    border: 3px solid #d4351c;
+}
+
+.field input:focus,
+button:focus,
+a.button:focus,
+.error-summary:focus {
+    box-shadow: 0 0 1px 4px #fd0;
+}
+
+a {
+    color: #1d70b8;
+}
+
+.field {
+    margin-bottom: 30px;
+}
+
+    .field-radio-button {
+        margin-left: 10px;
+        width: auto;
+        position: relative;    
+    }
+
+        .field-radio-button input {
+            opacity: 0;
+            margin-left: 10px;
+            width: auto;
+            position: relative;
+        }
+
+        .field-radio-button label {
+            display: inline-block;
+            padding-left: 10px;
+            cursor: pointer;
+            margin-bottom: .5rem;
+        }
+
+        .field-radio-button label:before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 4px;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .field-radio-button input:checked ~ label:after {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: 5px;
+            width: 0;
+            height: 0;
+            border: 5px solid black;
+            border-radius: 50%;
+            opacity: 1;
+            background: black;
+        }
+
+        .field-radio-button input:focus ~ label:before {
+            outline: 3px solid transparent;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 2px #ffbf47;
+        }
+
+    /* Check box */
+
+    .field-check-box {
+        position: relative;
+        padding: 6px 0;
+        margin: 30px 20px;
+    }
+    
+        .field-check-box input {
+            opacity: 0;
+            width: initial;
+        }
+
+        .field-check-box label {
+            display: inline-block;
+            padding-left: 1.2rem;
+            max-width: 90%;
+            cursor: pointer;
+            margin-top: 3px;
+        }
+
+        .field-check-box .field-hint {
+            margin-top: 5px;
+        }
+
+        .field-check-box label:before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            left: 4px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid black;
+            background: transparent;
+        }
+
+        .field-check-box input:checked ~ label:after {
+            content: "";
+            position: absolute;
+            top: 16px;
+            left: 8px;
+            width: 14px;
+            height: 4px;
+            border: solid black;
+            border-width: 0 0 3px 3px;
+            opacity: 1;
+            transform: rotate(-50deg);
+        }
+
+        .field-check-box input:focus ~ label:before {
+            outline: 3px solid transparent;
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px #ffbf47;
+        }
+
+
+
+.field-label {
+    display: block;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.field-prefix-group {
+    display: flex;
+}
+
+.field-prefix-group div:first-child {
+    width: 40px;
+    font-size: 1.125em;
+    font-weight: bold;
+    padding: 8px 14px;
+    border: 2px solid #BBB;
+    border-right: 0;
+    background-color: #EEE;
+}
+
+.field-suffix-group {
+    display: flex;
+}
+
+.field-suffix-group div:nth-child(2) {
+    font-size: 1.125em;
+    font-weight: bold;
+    padding: 10px 14px;
+    border: 2px solid #BBB;
+    border-left: 0;
+    background-color: #EEE;
+}
+
+.field-hint {
+    display: block;
+    color: #555;
+    line-height: 25px;
+}
+
+[type=text],
+[type=password],
+[type=email],
+[type=number] {
+    max-width: 400px;
+}
+
+[type=date] {
+    max-width: 200px;
+    letter-spacing: 2px;
+}
+
+/* Validation */
+
+.error-summary {
+    background: #fff;
+    border: 4px solid #d4351c;
+    color: #d4351c;
+    padding: 20px;
+    margin-bottom: 20px;    
+}
+
+.error-summary ul {
+    padding: 0;
+    margin: 0;
+}
+
+    .error-summary ul li {
+        list-style: none;
+        font-weight: bold;
+        margin: 10px 0 0 0;
+        line-height: 24px;
+    }
+
+.error-summary h2 {
+    color: #000;
+    margin: 0;
+    font-size: 23px;
+}
+
+.error-summary a {
+    color: #d4351c;
+    font-weight: bold;
+}
+
+.field-error {
+    color: #d4351c;
+    font-weight: bold;
+    display: block;
+    background-image: url(../images/error_48px.svg);
+    margin: 0;
+    background-position: left center;
+    background-size: 31px;
+    background-repeat: no-repeat;
+    padding: 10px 0 10px 40px;
+}
+
+    .field-error li {
+        list-style-type: none;
+    }
+
+.error-summary p {
+    margin: 10px 0 0 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.field-validation-valid {
+    display: none;
+    padding: 0 0 0 0;
+}
+
+.ltv_acceptable {
+    color: rgb(0, 231, 0);
+}
+
+.ltv_unacceptable {
+    color: red;
+}
+
+.ltv-desc, #ltv-toggle1 {
+    border: 1px solid rgb(148, 180, 96);
+    background-color: rgb(248, 252, 239);
+    margin-bottom: 40px;
+    margin-top: 20px;
+    padding: 0 25px;
+    max-width: 430px;
+    text-align: left;
+}
+
+#ltv-toggle1 {
+    border: 1px solid rgb(180, 96, 96);
+    background-color: rgb(252, 239, 239);
+}
+
+.field-ltv {
+    margin-left: 40px;
+    display: block;
+    font-weight: 400;
+    font-size: xx-large;
+    text-align: center;
+    display: inline-block;
+    width: 80px;
+    font-size: 1.125em;
+    filter: none;
+    border: 2px solid #BBB;
+    background-color: #EEE;
+}
+
+.field-ltv input {
+    padding: 8px;
+    margin-bottom: 0px;
+    width: 100%;
+    font-size: 1.125em;
+    filter: none;
+    border: none;
+    background-color: inherit;    
+}
+
+.field-ltv input:read-only {
+    box-shadow: none;
+    background-color: inherit;
+    cursor: default;
+}
+
+
+/* Adviser */
+
+.adviser-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logout-align {
+    padding-right: 20px;
+    margin-top: 30px;
+    display: block;    
+    float: right;
+}
+
+.enquiry-table {
+    padding-left: 0;
+    margin: 30px 0;
+}
+
+.enquiry-table a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.enquiry-table li {
+    border-radius: 3px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}    
+    .enquiry-table .table-header {
+        background-color: #7c93be;
+        border: 1px solid rgb(79, 88, 95, 0.6);
+        box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 0.6);
+        padding: 20px 20px;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: #fff;
+    }
+    .enquiry-table .table-row {
+        background-color: #dce4ec;
+        border: 1px solid rgba(79, 88, 95, 0.4);
+        box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 0.4);
+        align-items: center;
+    }
+        .enquiry-table .table-row:hover {
+            background-color: #c5d3e0;
+            border: 1px solid rgba(79, 88, 95, 0.6);
+            box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 0.8);
+            cursor: pointer;
+        }
+    .enquiry-table .col-1 {
+        flex-basis: 30%;
+    }
+    .enquiry-table .col-2 {
+        flex-basis: 30%;        
+    }
+    .enquiry-table .col-3 {
+        flex-basis: 20%;
+        text-align: right;
+    }
+    .enquiry-table .col-4 {
+        flex-basis: 20%;
+        text-align: right;
+    }    
+
+    @media all and (max-width: 767px) {
+        .enquiry-table {
+            margin: 0;
+            margin-top: 20px;
+        }
+        .enquiry-table .table-header {
+            display: none;
+        }
+        .enquiry-table .table-row {
+            width: 100%;
+            border: 1px solid rgb(79, 88, 95);
+            box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 0.6);
+            margin-bottom: 20px;
+            align-items: left;
+        }
+        .enquiry-table li {
+            display: inline-block;
+        }
+        .enquiry-table .col {
+            flex-basis: 100%;
+            display: flex;
+            padding: 10px 0;
+        }        
+        .enquiry-table .col-data:before {
+            color: #6C7A89;
+            padding-right: 10px;
+            content: attr(data-label)":";
+            flex-basis: 50%;
+            text-align: left;
+        }
+        button.button-small,
+        a.button-small {
+            width: 100%;            
+            text-align: center;
+        }
+    }
+
+.update-flex-container {
+    display: flex;    
+    flex-flow: column;    
+    justify-content: left;
+}
+    .flex-item {
+        background: rgb(249, 252, 255);
+        border-radius: 5px;
+        border: 1px solid rgb(149, 185, 212);
+        padding: 25px 35px;
+        margin: 20px;
+        width: auto;
+    }
+        .flex-item div {        
+            padding-left: 14px;
+            margin: 6px;
+        }
+
+    .enquiry-buttons {
+        margin: 30px 20px;
+    }
+
+/* Footer */
+
+footer {
+    background: #f2f2f2;
+    padding: 40px 20px;
+    margin-top: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+    footer .container {
+        max-width: 1200px;
+    }
+
+    footer a,
+    footer a:visited {
+        color: #000;
+    }
+
+    footer ul {
+        margin: 20px 0 30px 0;
+        padding: 0;
+    }
+
+        footer ul li {
+            display: inline-block;
+            list-style: none;
+            padding: 0 20px;
+            border-right: 1px solid;
+            margin: 0;
+            padding: 0 20px;
+        }
+
+            footer ul li:last-child {
+                border: none;
+            }
+
+/* Responsive */
+
+@media only screen and (max-width: 980px) {
+    footer {
+        text-align: left;
+    }
+
+        footer ul li {
+            display: block;
+            padding: 0 0 10px 0;
+            border: 0;
+        }
+}
+
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+    }
+
+    #main-content {
+        padding: 10px 20px;
+    }
+
+    header {
+        padding: 20px 20px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 1.875em;
+        text-align: center;
+    }
+
+    p {
+        line-height: 1.25em;
+    }
+
+    .update-flex-container {
+        display: flex;    
+        flex-flow: column;    
+        justify-content: left;
+        margin-bottom: 35px;
+    }
+
+        .flex-item {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            width: auto;
+        }
+            .flex-item div {        
+                padding-left: 14px;
+                margin: 10px;
+            }
+
+    .logo-box {
+        width: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    button,
+    a.button {
+        text-align: center;
+        width: 100%;        
+    }
+
+    button.button-danger,
+    a.button-danger {
+        margin: 0;
+    }
+
+    .logout-align {
+        padding-right: 0;
+        margin-top: 30px;
+        margin: 30px 5px;
+        float: none;
+    }
+
+    .field-radio-button {
+        padding: 3px 0;
+    }
+
+    .field-check-box {
+        padding: 6px 0;
+        margin: 30px 5px;
+    }
+
+    .enquiry-buttons {
+        margin: 30px 5px;
+    }
+
+    .success-img {
+        max-width: 200px;
+    }
+}

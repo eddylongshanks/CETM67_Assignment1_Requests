@@ -1,0 +1,90 @@
+{% extends "_layout.html" %}
+{% block title %}Your Details{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Your Details</h1>
+    <form action="{% url 'customer_details' %}" name="odip-form" method="POST">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="error-summary" tabindex="-1">
+            <h2>There's been a problem</h2>
+            <ul>            
+            {% for key, value in form.errors.items %}
+                <li>{{ value }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="field">
+            <label class="field-label">{{ form.first_name.label }}</label>            
+            {{ form.first_name }}
+        </div> 
+
+        <div class="field">
+            <label class="field-label">{{ form.last_name.label }}</label>
+            {{ form.last_name }}
+        </div>
+
+        <h3>What is your Address?</h3>
+
+        <div class="field">
+            <label class="field-label">{{ form.building.label }}</label>
+            {{ form.building }}
+        </div>
+        <div class="field">
+            {{ form.street }}
+        </div>
+        <div class="field">
+            <label class="field-label">{{ form.town.label }}</label>
+            {{ form.town }}
+        </div>
+        <div class="field">
+            <label class="field-label">{{ form.county.label }}</label>
+            {{ form.county }}
+        </div>
+        <div class="field">
+            <label class="field-label">{{ form.postcode.label }}</label>
+            {{ form.postcode }}
+        </div>
+        <div class="field">
+            <label class="field-label">{{ form.telephone_number.label }}</label>
+            {{ form.telephone_number }}
+        </div>
+        <div class="field">
+            <label class="field-label">{{ form.email_address.label }}</label>
+            <div class="field-hint">The data collected here will only be used to fulfill this request.</div>
+            {{ form.email_address }}
+        </div>
+
+        <fieldset>
+            <Legend>
+                <label class="field-label">{{ form.preferred_time_to_contact.label }}</label>
+            </Legend>
+            <div class="field-radio-button">
+                <input type="radio" name="preferred_time_to_contact" id="time-to-call-early-morning" value="M">
+                <label for="time-to-call-early-morning">9am - 12pm (Mon-Fri)</label>
+            </div>
+            <div class="field-radio-button">
+                <input type="radio" name="preferred_time_to_contact" id="time-to-call-early-afternoon" value="EA">
+                <label for="time-to-call-early-afternoon">12pm - 3pm (Mon-Fri)</label>
+            </div>
+            <div class="field-radio-button">
+                <input type="radio" name="preferred_time_to_contact" id="time-to-call-late-afternoon" value="LA">
+                <label for="time-to-call-late-afternoon">3pm - 5pm (Mon-Fri)</label>
+            </div>
+            <div class="field-radio-button">
+                <input type="radio" name="preferred_time_to_contact" id="time-to-call-saturday" value="S">
+                <label for="time-to-call-saturday">9am - 2pm (Sat)</label>
+            </div>
+        </fieldset>
+
+        <div class="field">
+            <button type="submit" id="next">Next</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

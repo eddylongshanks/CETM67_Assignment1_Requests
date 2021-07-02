@@ -1,0 +1,41 @@
+{% extends "_layout.html" %}
+{% block title %}Enquiry List{% endblock %}
+{% block content %}
+
+<div class="adviser-container">
+    <h1>Active Enquiries</h1>
+    <hr>
+    
+    {% if customers %}
+    <ul class="enquiry-table">
+        <li class="table-header">
+            <div class="col col-1">Customer Name</div>
+            <div class="col col-2">Telephone Number</div>
+            <div class="col col-3">Date of Enquiry</div>
+            <div class="col col-4"></div>
+        </li>
+        {% for customer in customers %}
+        <a href="{% url 'adviser-update' customer.personaldetails_ptr_id %}" tabindex="-1">
+            <li class="table-row">
+                <div class="col col-1 col-data" data-label="Customer Name">{{ customer.first_name }} {{ customer.last_name }}</div>
+                <div class="col col-2 col-data" data-label="Telephone Number">{{ customer.telephone_number }}</div>
+                <div class="col col-3 col-data" data-label="Date of Enquiry">{{ customer.date_created }}</div>
+                <div class="col col-4" data-label=""><button id="{{ customer.pk }}" class="button button-small">View Enquiry</button></div>
+            </li>
+        </a>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>There are no new enquiries.</p>
+    {% endif %}
+
+    <hr>
+
+    {% if user.is_authenticated %}        
+        <div class="logout-align">
+            <a class="button button-danger" href="{% url 'logout' %}">Log Out</a>
+        </div>        
+    {% endif %}
+</div>
+  
+{% endblock %}

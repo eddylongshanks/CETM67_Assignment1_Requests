@@ -1,0 +1,231 @@
+﻿@media (prefers-color-scheme: dark) {
+    
+    .skip-to-content a:focus {
+        color: #fff;            
+    }
+
+    body {
+        background-color: rgb(31, 31, 31);
+        color: rgb(170, 183, 192);
+    }
+
+    .field input {        
+        background: #333;
+        border-color: #555;
+        color: #fff;
+    }
+
+    h1, h3 {
+        color: rgb(154, 190, 214);    
+    }
+    
+    
+    h4 {        
+        color:  rgb(126, 183, 223);
+    }
+    
+    hr {        
+        border-color: #555;
+        color: #333;        
+    }
+
+    button,
+    a.button {        
+        background:  #5f7380;
+        color: #fff;
+    }
+
+        button:hover,
+        a.button:hover {
+            background: #728999;
+        }
+
+        button.button-danger,
+        a.button-danger {
+            background: rgb(182, 27, 0);
+        }
+            button.button-danger:hover,
+            a.button-danger:hover {
+                background: rgb(153, 29, 7);
+            }
+        
+        button.button-secondary,
+        a.button-secondary {
+            background: rgb(54, 54, 54);
+        }
+            button.button-secondary:hover,
+            a.button-secondary:hover {
+                background: rgb(77, 77, 77);
+            }
+
+    .input-validation-error {
+        border-color: #d4351c;
+    }
+
+    button:focus,
+    a.button:focus,
+    .error-summary:focus {
+        box-shadow: 0 0 1px 4px #ffbb00;        
+    }
+
+    .field input:focus {
+        box-shadow: 0 0 1px 4px #ffbb00;
+        background-color: rgb(41, 41, 41);
+    }
+
+    a {
+        color: #1d70b8;
+    }
+    
+    .logo-box {
+        background-image: url(../images/NewcastleBuildingSocietyLogo-white.svg);
+    }
+
+    /* Radio Button */
+
+    .field-radio-button label:before {        
+        border-color: #555;        
+    }
+
+        .field-radio-button input:checked ~ label:after {            
+            border-color: #555;            
+            background: #333;
+        }
+
+        .field-radio-button input:focus ~ label:before {            
+            box-shadow: 0 0 0 2px #ffbb00;
+        }
+    
+    /* Check box */
+
+    .field-check-box label:before {            
+        border-color: #fff;            
+    }
+
+        .field-check-box input:checked ~ label:after {
+            border-color: #fff;            
+            border-width: 0 0 3px 3px;
+        }
+
+        .field-check-box input:focus ~ label:before {
+            box-shadow: 0 0 0 2px #ffbb00;
+        }
+
+    .field-prefix-group div:first-child, 
+    .field-suffix-group div:nth-child(2) {        
+        border-color: #555;
+        background-color: #333;
+    }
+    
+    .field-hint {        
+        color: #555;
+    }
+
+    /* Validation */
+
+    .error-summary {
+        background: rgb(31, 31, 31);
+        border-color:  #d4351c;
+        color: #d4351c;
+    }
+
+    .error-summary h2 {
+        color: rgb(180, 180, 180);
+    }
+
+    .error-summary a {
+        color: #d4351c;
+    }
+
+    .field-error {
+        color: #d4351c;        
+        background-image: url(../images/error_48px.svg);       
+    }
+
+    
+    .ltv_acceptable {
+        color: rgb(0, 231, 0) !important;
+    }
+
+    .ltv_unacceptable {
+        color: red !important;
+    }
+
+    .ltv-desc, #ltv-toggle1 {
+        border-color: rgb(61, 75, 40);
+        background-color: rgb(36, 39, 31);
+    }
+
+    #ltv-toggle1 {
+        border-color: rgb(75, 40, 40);
+        background-color: rgb(39, 31, 31);
+    }
+
+    .field-ltv {        
+        border-color: #555;
+        background-color: #333;
+    }
+
+    .field-ltv input {
+        border: none;
+        background-color: inherit;
+    }
+
+    .field-ltv input:read-only {
+        box-shadow: none;
+        background-color: inherit;
+        cursor: default;
+    }
+
+    /* Table */
+
+    .enquiry-table .table-header {
+        background-color: #33363b;
+        color: #fff;
+        border: 1px solid rgb(79, 88, 95, 0.6);
+        box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 0.6);
+    }
+
+        .enquiry-table .table-row {
+            background-color: rgb(40, 40, 40);
+            border: 1px solid rgba(90, 101, 109, 0.4);
+            box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 0.4);
+        }
+
+        .enquiry-table .table-row:hover {
+            background-color: rgb(48, 50, 51);
+            border: 1px solid rgba(79, 88, 95, 0.6);
+            box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 0.8);
+        }
+
+        @media all and (max-width: 767px) {
+            .enquiry-table .col:before {
+                color: #6C7A89;                
+            }
+
+            .enquiry-table .table-row {
+                border: 1px solid rgb(7, 8, 8);
+                box-shadow: 2px 2px 2px 0px rgba(9, 10, 10, 1);                
+            }
+
+            .enquiry-table .table-row:hover {
+                background-color: rgb(46, 46, 46);
+                border: 1px solid rgb(7, 8, 8);
+            }
+        }
+
+    .flex-item {
+        background: rgb(36, 36, 36);            
+        border-color:  #555;
+    }        
+
+    footer {
+        background:rgb(37, 37, 37);
+        color: rgb(180, 180, 180);
+    }
+
+        footer a,
+        footer a:visited {
+            color: #fff;
+        }
+}

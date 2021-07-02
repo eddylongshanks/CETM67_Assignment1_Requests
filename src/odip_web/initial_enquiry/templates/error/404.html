@@ -1,0 +1,12 @@
+{% extends "_layout.html" %}
+{% block title %}Page not Found (404){% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Page not Found (404)</h1>
+    <p>The page you requested was not found.</p> 
+    <p>If you are having trouble, you can call us on 0345 606 4488 to book an appointment with one of our qualified mortgage advisers.</p>
+    <p><a class="button" href="{% url 'customer_details' %}">Return to Start</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "_layout.html" %}
+{% block title %}Property Details{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h1>Property Details</h1>
+    <form action="{% url 'property_details' %}" method="POST">
+        {% csrf_token %}
+
+        {% if form.errors %}
+        <div class="error-summary" tabindex="-1">
+            <h2>There's been a problem</h2>
+            <ul>            
+            {% for key, value in form.errors.items %}
+                <li>{{ value }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="field">
+            <label class="field-label">Annual Income</label>            
+            <div class="field-prefix-group">
+                <div>£</div>
+                {{ form.annual_income }}
+            </div>            
+        </div>
+
+        <div class="field">
+            <label class="field-label">Loan Amount</label>
+            <div class="field-prefix-group">
+                <div>£</div>
+                <input type="number" name="loan_amount" id="id_loan_amount" onchange="calculateLtv()" value="{{ form.loan_amount.value }}">
+            </div>
+        </div>
+        
+        <div class="field">
+            <label class="field-label">Property Value</label>
+            <div class="field-prefix-group">
+                <div>£</div>
+                <input type="number" name="property_value" id="id_property_value" onchange="calculateLtv()" value="{{ form.property_value.value }}">
+            </div>
+        </div>
+
+        <div id="ltv">            
+            <div class="field">                
+                <label class="field-label">Loan to Value (LTV)</label>
+                <div class="field-suffix-group">
+                    <span class="field-ltv"><input type="number" name="ltv_value" min="0" max="100" step="any" id="id_ltv_value" readonly></span>
+                    <div>%</div>
+                </div>
+                <div id="ltv-toggle1" class="hidden">
+                    <p>Unfortunately we are unable to issue a mortgage with your requirements. Please lower the loan amount or call us on 0345 606 4488 to discuss your needs.</p>
+                </div>
+            </div>
+            <div class="ltv-desc">                
+                <p>An LTV is the amount of your mortgage as a percentage of the current market value of your property.</p>
+                <p>The more equity (or bigger deposit) you have in your home, the lower this percentage will be and, typically, you'll be eligible for better deals.</p>
+            </div>
+        </div>
+
+        <fieldset>
+            <Legend>
+                <label class="field-label">Mortgage Type</label>
+            </Legend>
+            <!-- <span class="field-error"></span> -->
+            <div class="field-radio-button">
+                <input type="radio" name="mortgage_type" id="mortgage-type-new-house" value="NH">
+                <label for="mortgage-type-new-house">New House</label>
+            </div>
+            <div class="field-radio-button">
+                <input type="radio" name="mortgage_type" id="mortgage-type-remortgage" value="RM">
+                <label for="mortgage-type-remortgage">Remortgage</label>
+            </div>            
+        </fieldset>
+
+        <div class="field">
+            <button type="submit" id="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $('#id_loan_amount').change(calculateLtv());
+    $('#id_property_value').change(calculateLtv());
+
+    function calculateLtv() {
+        var loanamount = $(("#id_loan_amount")).val();
+        var propertyvalue = $(("#id_property_value")).val();
+        
+        loanamount = loanamount || 0
+        propertyvalue = propertyvalue || 0
+        
+        $.ajax({
+            url: '/ajax/calculate_ltv/',
+            data: {
+                'loanamount': loanamount,
+                'propertyvalue': propertyvalue
+            },
+            dataType: 'json',
+            success: function (data) {
+                document.getElementById("id_ltv_value").value = data.ltv;
+                document.getElementById("id_ltv_value").className = data.ltv_css;                
+                document.getElementById("ltv-toggle1").className = data.visibility_css;
+            }
+        });        
+    };
+</script>
+{% endblock %}
